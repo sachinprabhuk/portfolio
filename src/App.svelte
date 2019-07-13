@@ -1,11 +1,14 @@
 <script>
   import SideNav from "./components/NavBar.svelte";
+  import Home from "./components/Home.svelte";
+  import About from "./components/About.svelte";
+  import MyWork from "./components/MyWork.svelte";
 </script>
 
 <style>
   main {
-    /* 340px is the width of the navbar */
-    padding-left: 340px;
+    /* 320px is the width of the navbar */
+    padding-left: 320px;
   }
   @media only screen and (max-width: 992px) {
     main {
@@ -14,10 +17,11 @@
   }
 </style>
 
-<div class="app row">
+<div>
   <SideNav />
   <main>
-    <!-- all content should be put here -->
-    <h1>content to be added</h1>
+    <Home />
+    <About />
+    <MyWork />
   </main>
 </div>

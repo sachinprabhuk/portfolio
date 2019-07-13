@@ -31,7 +31,7 @@
   }
 </style>
 
-<ul id="side-nav" class="sidenav sidenav-fixed theme-teal">
+<ul id="side-nav" class="sidenav sidenav-fixed theme-primary">
   <li>
     <div class="user-view">
       <div class="circular">
