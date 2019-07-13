@@ -1,0 +1,22 @@
+:root {
+  /*
+    dont use these vars anywhere. This is just for reference 
+    These variables are available as materialize classes. :)
+  */
+  --theme-primary: #77a6f7;
+  --theme-primary-light: #d3e3fc;
+  --theme-secondary: #ffffff;
+  --theme-tertiary: #ffccbc;
+  --theme-teal: #00887a;
+}
+
+html,
+body {
+  padding: 0px;
+  margin: 0px;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
