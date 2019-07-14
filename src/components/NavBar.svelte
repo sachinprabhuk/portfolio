@@ -31,37 +31,37 @@
   }
 </style>
 
-<ul id="side-nav" class="sidenav sidenav-fixed theme-primary">
+<ul id="side-nav" class="sidenav sidenav-fixed">
   <li>
     <div class="user-view">
       <div class="circular">
         <img src="/images/user.png" alt="error" />
       </div>
-      <span class="white-text name">Sachin Prabhu K</span>
-      <span class="white-text email">Full stack web developer/programmer.</span>
+      <span class="name">Sachin Prabhu K</span>
+      <span class="email">Full stack web developer/programmer.</span>
     </div>
   </li>
   <li>
-    <a href="#!" class="white-text">
-      <i class="material-icons white-text">home</i>
+    <a href="#home">
+      <i class="material-icons grey-text">home</i>
       Welcome
     </a>
   </li>
   <li>
-    <a href="#!" class="white-text">
-      <i class="material-icons white-text">person_outline</i>
+    <a href="#about">
+      <i class="material-icons grey-text">person_outline</i>
       About me
     </a>
   </li>
   <li>
-    <a href="#!" class="white-text">
-      <i class="material-icons white-text">developer_mode</i>
+    <a href="#my-work">
+      <i class="material-icons grey-text">developer_mode</i>
       My works
     </a>
   </li>
   <li>
-    <a href="#!" class="white-text">
-      <i class="material-icons white-text">devices</i>
+    <a href="#contact">
+      <i class="material-icons grey-text">devices</i>
       Contact me
     </a>
   </li>

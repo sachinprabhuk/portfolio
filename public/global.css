@@ -1,3 +1,43 @@
+@font-face {
+  font-family: "roboto-thin";
+  src: url(/roboto/Roboto-Thin.ttf);
+}
+
+@font-face {
+  font-family: "roboto";
+  src: url(/roboto/Roboto-Regular.ttf);
+}
+
+@font-face {
+  font-family: "roboto-bold";
+  src: url(/roboto/Roboto-Bold.ttf);
+}
+
+@font-face {
+  font-family: "roboto-black";
+  src: url(/roboto/Roboto-Black.ttf);
+}
+
+@font-face {
+  font-family: "roboto-italic";
+  src: url(/roboto/Roboto-RegularItalic.ttf);
+}
+
+@font-face {
+  font-family: "palanquin";
+  src: url(/palanquin/Palanquin-Regular.ttf);
+}
+/*
+@font-face {
+  font-family: "palanquin-dark-semi-bold";
+  src: url(./palanquin/PalanquinDark-SemiBold.ttf);
+} */
+
+@font-face {
+  font-family: "palanquin-dark-bold";
+  src: url(./palanquin/PalanquinDark-Bold.ttf);
+}
+
 :root {
   /*
     dont use these vars anywhere. This is just for reference 
@@ -12,16 +52,18 @@
 
 * {
   box-sizing: border-box;
-  font-family: "Roboto", sans-serif;
+  font-family: "roboto";
 }
 
 body,
 html {
   padding: 0px;
   margin: 0px;
+  scroll-behavior: smooth;
 }
 
 section.page {
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
+  height: auto;
 }
