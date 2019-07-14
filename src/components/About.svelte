@@ -3,6 +3,10 @@
 </script>
 
 <style>
+  #about {
+    border-bottom: 1px solid #dfdfdf;
+    border-top: 1px solid #dfdfdf;
+  }
   #about .title {
     font-family: "palanquin";
     display: flex;
@@ -32,15 +36,31 @@
   #about div.main {
     font-size: 17px;
   }
+
+  .hire-me,
+  .download-cv {
+    padding: 10px 28px;
+    background: transparent;
+    border: 2px solid var(--theme-primary);
+    cursor: pointer;
+    display: inline-flex;
+    flex-basis: 80%;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 18px;
+    transition: 0.2s ease-in-out;
+    text-decoration: none;
+    margin-bottom: 10px;
+  }
 </style>
 
 <section class="page grey lighten-4" id="about">
   <div class="row">
     <div class="col s12 m10 offset-m1">
-      <h3 class="title">
+      <h4 class="title">
         <i class="material-icons theme-primary-text">person_outline</i>
         About me
-      </h3>
+      </h4>
     </div>
   </div>
   <div class="row">
@@ -100,9 +120,22 @@
             <li>Typescript</li>
             <li>Materialize CSS</li>
             <li>Semantic UI react</li>
+            <li>And more...</li>
           </ul>
         </div>
-        <!-- <div class="col s12 m6 l4" /> -->
+      </div>
+      <div class="row">
+        <a
+          class="col offset-s2 s8 m4 offset-m1 center-align hire-me"
+          href="#contact">
+          HIRE ME
+        </a>
+        <a
+          href="#!"
+          class="col offset-s2 s8 offset-m2 m4 center-align download-cv
+          theme-primary white-text">
+          DOWNLOAD CV
+        </a>
       </div>
     </div>
   </div>

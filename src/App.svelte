@@ -3,6 +3,7 @@
   import Home from "./components/Home.svelte";
   import About from "./components/About.svelte";
   import MyWork from "./components/MyWork.svelte";
+  import Contact from "./components/Contact.svelte";
 </script>
 
 <style>
@@ -23,5 +24,6 @@
     <Home />
     <About />
     <MyWork />
+    <Contact />
   </main>
 </div>
