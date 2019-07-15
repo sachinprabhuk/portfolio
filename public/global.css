@@ -1,41 +1,21 @@
 @font-face {
   font-family: "roboto-thin";
-  src: url(/roboto/Roboto-Thin.ttf);
+  src: url(/font/Roboto-Thin.ttf);
 }
 
 @font-face {
   font-family: "roboto";
-  src: url(/roboto/Roboto-Regular.ttf);
-}
-
-@font-face {
-  font-family: "roboto-bold";
-  src: url(/roboto/Roboto-Bold.ttf);
-}
-
-@font-face {
-  font-family: "roboto-black";
-  src: url(/roboto/Roboto-Black.ttf);
-}
-
-@font-face {
-  font-family: "roboto-italic";
-  src: url(/roboto/Roboto-RegularItalic.ttf);
+  src: url(/font/Roboto-Regular.ttf);
 }
 
 @font-face {
   font-family: "palanquin";
-  src: url(/palanquin/Palanquin-Regular.ttf);
+  src: url(/font/Palanquin-Regular.ttf);
 }
-/*
-@font-face {
-  font-family: "palanquin-dark-semi-bold";
-  src: url(./palanquin/PalanquinDark-SemiBold.ttf);
-} */
 
 @font-face {
   font-family: "palanquin-dark-bold";
-  src: url(./palanquin/PalanquinDark-Bold.ttf);
+  src: url(/font/PalanquinDark-Bold.ttf);
 }
 
 :root {
@@ -66,4 +46,16 @@ section.page {
   width: 100%;
   min-height: 100vh;
   height: auto;
+}
+
+section .title {
+  font-family: "palanquin";
+  display: flex;
+  align-items: center;
+}
+
+section .title i.material-icons {
+  font-size: 100%;
+  margin-top: 8px;
+  margin-right: 15px;
 }

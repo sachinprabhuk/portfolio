@@ -1,24 +1,9 @@
-<script>
-  import Canvas from "./Canvas.svelte";
-  import Divider from "./Divider.svelte";
-</script>
-
 <style>
-  #home img {
-    width: 100%;
-    height: auto;
-    position: absolute;
-    left: 0px;
-    top: 0px;
-    /* filter: blur(2px); */
-  }
-
   #home {
     overflow: hidden;
     position: relative;
     display: flex;
     justify-content: center;
-    font-family: Playfair, display;
   }
 
   section#home .container {
@@ -60,15 +45,12 @@
     padding: 8px 28px;
     background: transparent;
     border: 2px solid var(--theme-primary);
+    color: var(--theme-primary);
     border-radius: 2px;
     cursor: pointer;
-    display: inline-flex;
-    justify-content: space-around;
-    align-items: center;
     font-size: 18px;
-    color: var(--theme-primary);
-    transition: 0.2s ease-in-out;
     text-decoration: none;
+    transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
   }
 
   .more-about-me:hover {
@@ -92,12 +74,13 @@
       <h5>Programmer</h5>
       <h5>Problem solver</h5>
     </div>
-    <a class="more-about-me" href="#about">
+    <a
+      style="display: inline-flex;align-items: center;"
+      class="more-about-me"
+      href="#about">
       More about me
-      <i class="material-icons right">arrow_downward</i>
+      <i class="material-icons">arrow_downward</i>
     </a>
   </div>
 
 </section>
-
-<!-- <Divider /> -->

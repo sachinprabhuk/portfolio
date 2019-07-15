@@ -1,23 +1,8 @@
-<script>
-  import Divider from "./Divider.svelte";
-</script>
-
 <style>
   #about {
     border-bottom: 1px solid #dfdfdf;
     border-top: 1px solid #dfdfdf;
   }
-  #about .title {
-    font-family: "palanquin";
-    display: flex;
-    align-items: center;
-  }
-  .title i.material-icons {
-    font-size: 100%;
-    margin-top: 8px;
-    margin-right: 15px;
-  }
-
   /* #about #skills div.col > h6 {
     text-decoration: underline;
   } */
@@ -131,7 +116,8 @@
           HIRE ME
         </a>
         <a
-          href="#!"
+          href="/__Resume_v1__.docx"
+          download
           class="col offset-s2 s8 offset-m2 m4 center-align download-cv
           theme-primary white-text">
           DOWNLOAD CV
