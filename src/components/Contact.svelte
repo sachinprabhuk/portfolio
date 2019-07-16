@@ -1,3 +1,33 @@
+<script>
+  let form = {
+    name: "",
+    email: "",
+    subject: "",
+    message: ""
+  };
+  let submitting = false;
+  function handleChange(e) {
+    form[e.target.id] = e.target.value;
+  }
+  async function handleSubmit(e) {
+    e.preventDefault();
+    submitting = true;
+    try {
+      const { data } = await fetch(
+        "http://localhost:9000/.netlify/functions/send-mail",
+        {
+          method: "POST",
+          body: JSON.stringify(form)
+        }
+      );
+      console.log(data);
+    } catch (e) {
+      console.log(e);
+    }
+    submitting = false;
+  }
+</script>
+
 <style>
   section#contact {
     position: relative;
@@ -52,47 +82,53 @@
   .input-field textarea:focus {
     border-bottom: 1px solid #fff;
     box-shadow: 0 1px 0 0 #fff;
-    /* border-bottom: 1px solid var(--theme-primary);
-    box-shadow: 0 1px 0 0 var(--theme-primary); */
   }
 
   button {
     /* display: block; */
     padding: 10px 25px;
-    border: 2px solid white;
+    border: none;
     background: white;
     color: var(--theme-primary);
     font-size: 20px;
     cursor: pointer;
+    transition: 0.4s;
+  }
+  button:disabled {
+    background-color: #dfdfdf;
   }
 </style>
 
 <section class="page theme-primary align-center" id="contact">
   <br />
   <span class="title white-text">I'd love to hear from you.</span>
-  <form class="valign-wrapper">
+  <form class="valign-wrapper" on:submit={handleSubmit}>
     <div class="row" style="padding: 0px;margin: 0px;">
       <div class="input-field col s12 m8 l6 offset-m2 offset-l3">
-        <input id="name" type="text" />
+        <input id="name" type="text" required bind:value={form.name} />
         <label for="name">name</label>
       </div>
 
       <div class="input-field col s12 m8 l6 offset-m2 offset-l3">
-        <input id="name" type="email" />
+        <input id="email" type="email" required bind:value={form.email} />
         <label for="name">email</label>
       </div>
       <div class="input-field col s12 m8 l6 offset-m2 offset-l3">
-        <input id="name" type="text" />
+        <input id="subject" type="text" required bind:value={form.subject} />
         <label for="name">subject</label>
       </div>
 
       <div class="input-field col s12 m8 l6 offset-m2 offset-l3">
-        <textarea id="message" class="materialize-textarea" />
+        <textarea
+          id="message"
+          class="materialize-textarea"
+          required
+          bind:value={form.message} />
         <label for="message">message</label>
       </div>
       <div class="input-field col s12 center-align">
-        <button>
-          Send message
+        <button disabled={submitting}>
+          {submitting ? 'Sending...' : 'Send message'}
           <i class="material-icons right">send</i>
         </button>
       </div>
