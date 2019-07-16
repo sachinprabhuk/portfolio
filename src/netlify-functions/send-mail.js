@@ -8,7 +8,12 @@ export async function handler(event, context) {
       statusCode: 400,
       body: "Bad request"
     };
-
+  console.log(
+    body,
+    process.env.EMAIL,
+    process.env.EMAIL_PASSWORD,
+    process.env.MY_EMAIL
+  );
   const { name, email, message, subject } = body;
 
   try {
