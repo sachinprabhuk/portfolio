@@ -6,6 +6,7 @@
     message: ""
   };
   let submitting = false;
+  let submitResp = "";
   function handleChange(e) {
     form[e.target.id] = e.target.value;
   }
@@ -17,15 +18,38 @@
         method: "POST",
         body: JSON.stringify(form)
       });
-      console.log(data);
+      submitResp = {
+        success: true,
+        msg: "Thanks for the message! Talk to you soon :)"
+      };
     } catch (e) {
-      console.log(e);
+      submitResp = {
+        success: false,
+        msg: "Sorry!! something went wrong. Please try again in some time"
+      };
     }
+    setTimeout(() => {
+      submitResp = "";
+    }, 6000);
     submitting = false;
   }
 </script>
 
 <style>
+  @keyframes fade {
+    from {
+      opacity: 0;
+      transform: scale(0.4);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  div.submit-msg {
+    animation-name: fade;
+    animation-duration: 0.6s;
+  }
   section#contact {
     position: relative;
   }
@@ -41,7 +65,7 @@
     left: 0px;
     display: block;
     width: 100%;
-    padding: 25px 20px;
+    padding: 10px 20px;
     text-align: center;
   }
   footer .cpr {
@@ -56,12 +80,20 @@
     /* color: var(--theme-primary); */
     font-size: 16px;
   }
+  :global(.input-field input[type="text"] + label.active, .input-field
+      input[type="email"]
+      + label.active, .input-field textarea + label.active) {
+    color: #fff;
+    /* color: var(--theme-primary); */
+    font-size: 16px;
+  }
+
   .input-field input[type="text"],
   .input-field input[type="email"],
   .input-field textarea {
     border-bottom: 1px solid #dfdfdf;
     box-shadow: 0 1px 0 0 #dfdfdf;
-    color: #dfdfdf;
+    color: #fff;
     /* color: var(--theme-primary); */
     font-size: 16px;
   }
@@ -123,13 +155,25 @@
           bind:value={form.message} />
         <label for="message">message</label>
       </div>
+      {#if typeof submitResp === 'object'}
+        <div class="input-field col s12 center-align submit-msg">
+          {#if submitResp.success === true}
+            <h6 class="green-text" style="margin: 0px;padding: 0px;">
+              {submitResp.msg}
+            </h6>
+          {:else}
+            <h6 class="red-text" style="margin: 0px;padding: 0px;">
+              {submitResp.msg}
+            </h6>
+          {/if}
+        </div>
+      {/if}
       <div class="input-field col s12 center-align">
         <button disabled={submitting}>
           {submitting ? 'Sending...' : 'Send message'}
           <i class="material-icons right">send</i>
         </button>
       </div>
-
     </div>
   </form>
   <footer class="black-text grey lighten-4">

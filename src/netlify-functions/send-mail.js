@@ -1,5 +1,12 @@
 const nodemailer = require("nodemailer");
 
+// import vars from .env if in dev mode. other mode is production
+// which is setup on netlify.
+if (process.env.NODE_ENV === "dev") {
+  const dotenv = require("dotenv");
+  dotenv.config();
+}
+
 export async function handler(event, context) {
   const body = JSON.parse(event.body);
 
@@ -8,12 +15,6 @@ export async function handler(event, context) {
       statusCode: 400,
       body: "Bad request"
     };
-  console.log(
-    body,
-    process.env.EMAIL,
-    process.env.EMAIL_PASSWORD,
-    process.env.MY_EMAIL
-  );
   const { name, email, message, subject } = body;
 
   try {
