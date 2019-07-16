@@ -12,6 +12,7 @@
   }
   async function handleSubmit(e) {
     e.preventDefault();
+
     submitting = true;
     try {
       const { data } = await fetch("/.netlify/functions/send-mail", {
@@ -49,6 +50,10 @@
   div.submit-msg {
     animation-name: fade;
     animation-duration: 0.6s;
+  }
+  div.submit-msg h6 {
+    margin: 0px;
+    padding: 0px;
   }
   section#contact {
     position: relative;
@@ -158,13 +163,9 @@
       {#if typeof submitResp === 'object'}
         <div class="input-field col s12 center-align submit-msg">
           {#if submitResp.success === true}
-            <h6 class="green-text" style="margin: 0px;padding: 0px;">
-              {submitResp.msg}
-            </h6>
+            <h6 class="white-text">{submitResp.msg}</h6>
           {:else}
-            <h6 class="red-text" style="margin: 0px;padding: 0px;">
-              {submitResp.msg}
-            </h6>
+            <h6 class="red-text">{submitResp.msg}</h6>
           {/if}
         </div>
       {/if}

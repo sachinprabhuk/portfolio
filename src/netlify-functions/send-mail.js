@@ -42,6 +42,7 @@ export async function handler(event, context) {
       body: "success"
     };
   } catch (e) {
+    console.log(e);
     return {
       statusCode: 500,
       body: "failure"

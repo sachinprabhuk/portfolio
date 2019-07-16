@@ -109,6 +109,7 @@
           </ul>
         </div>
       </div>
+      <br />
       <div class="row">
         <a
           class="col offset-s2 s8 m4 offset-m1 center-align hire-me"
