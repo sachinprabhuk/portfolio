@@ -13,13 +13,10 @@
     e.preventDefault();
     submitting = true;
     try {
-      const { data } = await fetch(
-        "http://localhost:9000/.netlify/functions/send-mail",
-        {
-          method: "POST",
-          body: JSON.stringify(form)
-        }
-      );
+      const { data } = await fetch("/.netlify/functions/send-mail", {
+        method: "POST",
+        body: JSON.stringify(form)
+      });
       console.log(data);
     } catch (e) {
       console.log(e);
