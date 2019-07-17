@@ -18,7 +18,7 @@
     "sirv-cli": "^0.4.4"
   },
   "scripts": {
-    "netlify:serve": "NODE_ENV=dev netlify-lambda serve ./src/netlify-functions",
+    "netlify:serve": "MODE=local netlify-lambda serve ./src/netlify-functions",
     "netlify:build": "netlify-lambda build ./src/netlify-functions",
     "build": "rollup -c",
     "autobuild": "rollup -c -w",

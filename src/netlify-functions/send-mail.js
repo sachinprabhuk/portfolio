@@ -2,7 +2,7 @@ const nodemailer = require("nodemailer");
 
 // import vars from .env if in dev mode. other mode is production
 // which is setup on netlify.
-if (process.env.NODE_ENV === "dev") {
+if (process.env.MODE === "local") {
   const dotenv = require("dotenv");
   dotenv.config();
 }
@@ -16,7 +16,6 @@ export async function handler(event, context) {
       body: "Bad request"
     };
   const { name, email, message, subject } = body;
-
   try {
     const transporter = nodemailer.createTransport({
       service: "gmail",
@@ -42,10 +41,12 @@ export async function handler(event, context) {
       body: "success"
     };
   } catch (e) {
+    console.log("--------error start------------>");
+    console.log(e);
+    console.log("--------error end------------");
     return {
-      error: e
       statusCode: 500,
-      body: "failure"
+      body: "failed!!"
     };
   }
 }
