@@ -17,9 +17,18 @@
   async function handleSubmit(e) {
     e.preventDefault();
     submitting = true;
+    console.log("submitting form...");
+    console.log({
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: encode({
+        "form-name": "contact",
+        ...form
+      })
+    });
     try {
       await fetch("/", {
-        method: "post",
+        method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: encode({
           "form-name": "contact",
@@ -143,10 +152,7 @@
 <section class="page theme-primary align-center" id="contact">
   <br />
   <span class="title white-text">I'd love to hear from you.</span>
-  <form
-    on:submit={handleSubmit}
-    style="margin-top: 10px;"
-    data-netlify-recaptcha="true">
+  <form on:submit={handleSubmit} style="margin-top: 10px;">
     <div class="row" style="padding: 0px;margin: 0px;">
       <div class="col s12 m8 l6 offset-m2 offset-l3">
         <div class="input-field">
@@ -191,9 +197,9 @@
         {#if typeof submitResp === 'object'}
           <div class="input-field center-align submit-msg">
             {#if submitResp.success}
-              <h6 class="white-text">{submitResp.msg}</h6>
+              <h6 class="white-text">{submitResp.message}</h6>
             {:else}
-              <h6 class="red-text">{submitResp.msg}</h6>
+              <h6 class="red-text">{submitResp.message}</h6>
             {/if}
           </div>
         {/if}

@@ -20,13 +20,7 @@
 
   <body>
     <!-- this is a fake form for netlify forms to work -->
-    <form
-      hidden
-      name="contact"
-      netlify
-      netlify-honeypot="bot-field"
-      data-netlify-recaptcha="true"
-    >
+    <form hidden name="contact" netlify netlify-honeypot="bot-field">
       <p
         style="visibility: hidden;width: 0px;height: 0px;position: absolute;left: -99999999px;"
       >
@@ -36,10 +30,6 @@
       <input type="email" name="email" />
       <input type="text" name="subject" />
       <textarea name="message"></textarea>
-      <div class="input-field">
-        <div data-netlify-recaptcha="true"></div>
-      </div>
-      <button></button>
     </form>
   </body>
   <script src="/materialize.min.js"></script>
