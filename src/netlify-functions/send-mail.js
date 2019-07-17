@@ -43,6 +43,8 @@ export async function handler(event, context) {
   } catch (e) {
     console.log("--------error start------------>");
     console.log(e);
+    console.log("email => ", process.env.EMAIL);
+    console.log("password => ", process.env.EMAIL_PASSWORD);
     console.log("--------error end------------");
     return {
       statusCode: 500,
