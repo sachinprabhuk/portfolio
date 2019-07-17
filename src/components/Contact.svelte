@@ -114,7 +114,7 @@
 <section class="page theme-primary align-center" id="contact">
   <br />
   <span class="title white-text">I'd love to hear from you.</span>
-  <form class="valign-wrapper" name="contact" netlify>
+  <form class="valign-wrapper" name="contact" method="POST" netlify>
     <div class="row" style="padding: 0px;margin: 0px;">
       <div class="input-field col s12 m8 l6 offset-m2 offset-l3">
         <input id="name" type="text" name="name" required />
