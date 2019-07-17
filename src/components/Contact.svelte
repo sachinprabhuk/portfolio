@@ -1,38 +1,16 @@
 <script>
-  let form = {
-    name: "",
-    email: "",
-    subject: "",
-    message: ""
-  };
   let submitting = false;
   let submitResp = "";
-  function handleChange(e) {
-    form[e.target.id] = e.target.value;
-  }
-  async function handleSubmit(e) {
+  function handleSubmit(e) {
     e.preventDefault();
-
     submitting = true;
-    try {
-      const { data } = await fetch("/.netlify/functions/send-mail", {
-        method: "POST",
-        body: JSON.stringify(form)
-      });
-      submitResp = {
-        success: true,
-        msg: "Thanks for the message! Talk to you soon :)"
-      };
-    } catch (e) {
-      submitResp = {
-        success: false,
-        msg: "Sorry!! something went wrong. Please try again in some time"
-      };
-    }
     setTimeout(() => {
-      submitResp = "";
-    }, 6000);
-    submitting = false;
+      submitting = false;
+      submitResp = "Thanks for the message!! Talk to you soon :)";
+      setTimeout(() => {
+        submitResp = "";
+      }, 7000);
+    }, 3000);
   }
 </script>
 
@@ -136,37 +114,29 @@
 <section class="page theme-primary align-center" id="contact">
   <br />
   <span class="title white-text">I'd love to hear from you.</span>
-  <form class="valign-wrapper" on:submit={handleSubmit}>
+  <form class="valign-wrapper" netlify on:submit={handleSubmit}>
     <div class="row" style="padding: 0px;margin: 0px;">
       <div class="input-field col s12 m8 l6 offset-m2 offset-l3">
-        <input id="name" type="text" required bind:value={form.name} />
+        <input id="name" type="text" required />
         <label for="name">name</label>
       </div>
 
       <div class="input-field col s12 m8 l6 offset-m2 offset-l3">
-        <input id="email" type="email" required bind:value={form.email} />
+        <input id="email" type="email" required />
         <label for="name">email</label>
       </div>
       <div class="input-field col s12 m8 l6 offset-m2 offset-l3">
-        <input id="subject" type="text" required bind:value={form.subject} />
+        <input id="subject" type="text" required />
         <label for="name">subject</label>
       </div>
 
       <div class="input-field col s12 m8 l6 offset-m2 offset-l3">
-        <textarea
-          id="message"
-          class="materialize-textarea"
-          required
-          bind:value={form.message} />
+        <textarea id="message" class="materialize-textarea" required />
         <label for="message">message</label>
       </div>
-      {#if typeof submitResp === 'object'}
+      {#if submitResp.length > 0}
         <div class="input-field col s12 center-align submit-msg">
-          {#if submitResp.success === true}
-            <h6 class="white-text">{submitResp.msg}</h6>
-          {:else}
-            <h6 class="red-text">{submitResp.msg}</h6>
-          {/if}
+          <h6 class="white-text">{submitResp}</h6>
         </div>
       {/if}
       <div class="input-field col s12 center-align">
