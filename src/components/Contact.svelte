@@ -6,18 +6,40 @@
     message: ""
   };
 
+  const encode = data => {
+    return Object.keys(data)
+      .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+      .join("&");
+  };
+
   let submitting = false;
   let submitResp = "";
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
     submitting = true;
+    try {
+      await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: encode({
+          "form-name": "contact",
+          ...form
+        })
+      });
+      submitResp = {
+        success: true,
+        message: "Thanks for the message. Talk to you soon :)"
+      };
+    } catch (e) {
+      submitResp = {
+        success: false,
+        message: "Oops!!something went wrong. Please try again in sometime"
+      };
+    }
     setTimeout(() => {
-      submitting = false;
-      submitResp = "Thanks for the message!! Talk to you soon :)";
-      setTimeout(() => {
-        submitResp = "";
-      }, 7000);
-    }, 3000);
+      submitResp = "";
+    }, 7000);
+    submitting = false;
   }
 </script>
 
@@ -121,7 +143,7 @@
 <section class="page theme-primary align-center" id="contact">
   <br />
   <span class="title white-text">I'd love to hear from you.</span>
-  <form class="valign-wrapper">
+  <form class="valign-wrapper" on:submit={handleSubmit}>
     <div class="row" style="padding: 0px;margin: 0px;">
       <div class="input-field col s12 m8 l6 offset-m2 offset-l3">
         <input
