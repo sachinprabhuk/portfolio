@@ -46,7 +46,7 @@ export async function handler(event, context) {
     console.log("--------error end------------");
     return {
       statusCode: 500,
-      body: "failed!!"
+      body: "failed!!" + e.message
     };
   }
 }
