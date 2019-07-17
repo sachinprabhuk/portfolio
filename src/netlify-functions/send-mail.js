@@ -8,6 +8,12 @@ if (process.env.MODE === "local") {
 }
 
 export async function handler(event, context) {
+  if (event.httpMethod !== "POST")
+    return {
+      statusCode: 400,
+      body: "bad request"
+    };
+
   const body = JSON.parse(event.body);
 
   if (!body.name || !body.email || !body.message || !body.subject)
@@ -26,7 +32,7 @@ export async function handler(event, context) {
     });
     await transporter.sendMail({
       from: process.env.EMAIL,
-      to: process.env.MY_EMAIL,
+      to: process.env.EMAIL,
       subject: `Some on is trying to contact you via portfolio 
       with the following subject -> ${subject}`,
       html: `
@@ -43,12 +49,10 @@ export async function handler(event, context) {
   } catch (e) {
     console.log("--------error start------------>");
     console.log(e);
-    console.log("email => ", process.env.EMAIL);
-    console.log("password => ", process.env.EMAIL_PASSWORD);
     console.log("--------error end------------");
     return {
       statusCode: 500,
-      body: "failed!!" + e.message
+      body: "failed!!"
     };
   }
 }
