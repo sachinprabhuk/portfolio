@@ -19,7 +19,7 @@
     submitting = true;
     try {
       await fetch("/", {
-        method: "POST",
+        method: "post",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: encode({
           "form-name": "contact",
