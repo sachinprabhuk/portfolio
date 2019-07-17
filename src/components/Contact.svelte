@@ -149,11 +149,13 @@
   }
 </style>
 
-<section class="page theme-primary align-center" id="contact">
+<section class="page theme-primary align-center " id="contact">
   <br />
   <span class="title white-text">I'd love to hear from you.</span>
-  <form on:submit={handleSubmit} style="margin-top: 10px;">
-    <div class="row" style="padding: 0px;margin: 0px;">
+  <br />
+  <br />
+  <form on:submit={handleSubmit}>
+    <div class="row valign-center" style="padding: 0px;margin: 0px;">
       <div class="col s12 m8 l6 offset-m2 offset-l3">
         <div class="input-field">
           <input
@@ -191,9 +193,6 @@
             required />
           <label for="message">message</label>
         </div>
-        <div class="input-field row">
-          <div data-netlify-recaptcha="true" />
-        </div>
         {#if typeof submitResp === 'object'}
           <div class="input-field center-align submit-msg">
             {#if submitResp.success}
@@ -203,7 +202,7 @@
             {/if}
           </div>
         {/if}
-        <div class="input-field">
+        <div class="input-field center-align">
           <button disabled={submitting} type="submit">
             {submitting ? 'Sending...' : 'Send message'}
             <i class="material-icons right">send</i>
