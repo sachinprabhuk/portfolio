@@ -6,29 +6,45 @@
   import MyWork from "./components/MyWork.svelte";
   import Contact from "./components/Contact.svelte";
 
+  let activeID = null;
   onMount(() => {
-    const sections = [
-      document.querySelector("#home"),
-      document.querySelector("#about"),
-      document.querySelector("#my-work"),
-      document.querySelector("#contact"),
-    ]
-    // const home = document.querySelector("#home");
-    // const about = document.querySelector("#about");
-    // const work = document.querySelector("#my-work");
-    // const contact = document.querySelector("#contact");
-    window.addEventListener("scroll", e => {
-      sections
-        .map(section => window.scrollY - section.offsetTop)
-        .filter(el => el > 0);
-      console.log(
-        window.scrollY,
-        about.offsetTop,
-        window.scrollY - about.offsetTop
-      );
-    });
+    const scrollHanlder = (function() {
+      const sections = [
+        {
+          id: "#home",
+          node: document.querySelector("#home"),
+          offsetTop: 0
+        },
+        {
+          id: "#about",
+          node: document.querySelector("#about"),
+          offsetTop: 0
+        },
+        {
+          id: "#my-work",
+          node: document.querySelector("#my-work"),
+          offsetTop: 0
+        },
+        {
+          id: "#contact",
+          node: document.querySelector("#contact"),
+          offsetTop: 0
+        }
+      ].map(el => {
+        el.offsetTop = el.node.offsetTop;
+        return el;
+      });
 
-    // console.log(home, about, work, contact);
+      return e => {
+        let scrollDist = window.scrollY;
+        if (scrollDist < sections[1].offsetTop) activeID = sections[0].id;
+        else if (scrollDist < sections[2].offsetTop) activeID = sections[1].id;
+        else if (scrollDist < sections[3].offsetTop) activeID = sections[2].id;
+        else activeID = sections[3].id;
+      };
+    })();
+
+    window.addEventListener("scroll", scrollHanlder);
   });
 </script>
 
@@ -45,7 +61,7 @@
 </style>
 
 <div>
-  <SideNav />
+  <SideNav {activeID} />
   <main>
     <Home />
     <About />

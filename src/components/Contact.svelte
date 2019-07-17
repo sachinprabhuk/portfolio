@@ -5,33 +5,41 @@
     subject: "",
     message: ""
   };
+
+  const encode = data => {
+    return Object.keys(data)
+      .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+      .join("&");
+  };
+
   let submitting = false;
   let submitResp = "";
-  function handleChange(e) {
-    form[e.target.id] = e.target.value;
-  }
   async function handleSubmit(e) {
     e.preventDefault();
-
     submitting = true;
     try {
-      const { data } = await fetch("/.netlify/functions/send-mail", {
+      await fetch("/", {
         method: "POST",
-        body: JSON.stringify(form)
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: encode({
+          "form-name": "contact",
+          ...form
+        })
       });
+      for (let key in form) form[key] = null;
       submitResp = {
         success: true,
-        msg: "Thanks for the message! Talk to you soon :)"
+        message: "Thanks for the message. Talk to you soon :)"
       };
     } catch (e) {
       submitResp = {
         success: false,
-        msg: "Sorry!! something went wrong. Please try again in some time"
+        message: "Oops!!something went wrong. Please try again in sometime"
       };
     }
     setTimeout(() => {
       submitResp = "";
-    }, 6000);
+    }, 7000);
     submitting = false;
   }
 </script>
@@ -133,47 +141,65 @@
   }
 </style>
 
-<section class="page theme-primary align-center" id="contact">
+<section class="page theme-primary align-center " id="contact">
   <br />
   <span class="title white-text">I'd love to hear from you.</span>
-  <form class="valign-wrapper" on:submit={handleSubmit}>
-    <div class="row" style="padding: 0px;margin: 0px;">
-      <div class="input-field col s12 m8 l6 offset-m2 offset-l3">
-        <input id="name" type="text" required bind:value={form.name} />
-        <label for="name">name</label>
-      </div>
-
-      <div class="input-field col s12 m8 l6 offset-m2 offset-l3">
-        <input id="email" type="email" required bind:value={form.email} />
-        <label for="name">email</label>
-      </div>
-      <div class="input-field col s12 m8 l6 offset-m2 offset-l3">
-        <input id="subject" type="text" required bind:value={form.subject} />
-        <label for="name">subject</label>
-      </div>
-
-      <div class="input-field col s12 m8 l6 offset-m2 offset-l3">
-        <textarea
-          id="message"
-          class="materialize-textarea"
-          required
-          bind:value={form.message} />
-        <label for="message">message</label>
-      </div>
-      {#if typeof submitResp === 'object'}
-        <div class="input-field col s12 center-align submit-msg">
-          {#if submitResp.success === true}
-            <h6 class="white-text">{submitResp.msg}</h6>
-          {:else}
-            <h6 class="red-text">{submitResp.msg}</h6>
-          {/if}
+  <br />
+  <br />
+  <form on:submit={handleSubmit}>
+    <div class="row valign-center" style="padding: 0px;margin: 0px;">
+      <div class="col s12 m8 l6 offset-m2 offset-l3">
+        <div class="input-field">
+          <input
+            id="name"
+            type="text"
+            name="name"
+            required
+            bind:value={form.name} />
+          <label for="name">name</label>
         </div>
-      {/if}
-      <div class="input-field col s12 center-align">
-        <button disabled={submitting}>
-          {submitting ? 'Sending...' : 'Send message'}
-          <i class="material-icons right">send</i>
-        </button>
+        <div class="input-field">
+          <input
+            id="email"
+            type="email"
+            name="email"
+            required
+            bind:value={form.email} />
+          <label for="name">email</label>
+        </div>
+        <div class="input-field">
+          <input
+            id="subject"
+            type="text"
+            name="subject"
+            required
+            bind:value={form.subject} />
+          <label for="name">subject</label>
+        </div>
+        <div class="input-field">
+          <textarea
+            id="message"
+            class="materialize-textarea"
+            name="message"
+            bind:value={form.message}
+            required />
+          <label for="message">message</label>
+        </div>
+        {#if typeof submitResp === 'object'}
+          <div class="input-field center-align submit-msg">
+            {#if submitResp.success}
+              <h6 class="white-text">{submitResp.message}</h6>
+            {:else}
+              <h6 class="red-text">{submitResp.message}</h6>
+            {/if}
+          </div>
+        {/if}
+        <div class="input-field center-align">
+          <button disabled={submitting} type="submit">
+            {submitting ? 'Sending...' : 'Send message'}
+            <i class="material-icons right">send</i>
+          </button>
+        </div>
       </div>
     </div>
   </form>

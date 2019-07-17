@@ -1,3 +1,34 @@
+<script>
+  export let activeID = null;
+
+  const navOps = [
+    {
+      key: 1,
+      link: "#home",
+      icon: "home",
+      text: "Welcome"
+    },
+    {
+      key: 2,
+      link: "#about",
+      icon: "person_outline",
+      text: "About me"
+    },
+    {
+      key: 3,
+      link: "#my-work",
+      icon: "developer_mode",
+      text: "Work"
+    },
+    {
+      key: 4,
+      link: "#contact",
+      icon: "devices",
+      text: "Contact me"
+    }
+  ];
+</script>
+
 <style>
   #side-nav {
     width: 320px;
@@ -41,28 +72,21 @@
       <span class="email">Full stack web developer/programmer.</span>
     </div>
   </li>
-  <li>
-    <a href="#home">
-      <i class="material-icons grey-text">home</i>
-      Welcome
-    </a>
-  </li>
-  <li>
-    <a href="#about">
-      <i class="material-icons grey-text">person_outline</i>
-      About me
-    </a>
-  </li>
-  <li>
-    <a href="#my-work">
-      <i class="material-icons grey-text">developer_mode</i>
-      My works
-    </a>
-  </li>
-  <li>
-    <a href="#contact">
-      <i class="material-icons grey-text">devices</i>
-      Contact me
-    </a>
-  </li>
+  {#each navOps as navOp (navOp.key)}
+    {#if navOp.link === activeID}
+      <li class="active">
+        <a href={navOp.link}>
+          <i class="material-icons grey-text">{navOp.icon}</i>
+          {navOp.text}
+        </a>
+      </li>
+    {:else}
+      <li>
+        <a href={navOp.link}>
+          <i class="material-icons grey-text">{navOp.icon}</i>
+          {navOp.text}
+        </a>
+      </li>
+    {/if}
+  {/each}
 </ul>
