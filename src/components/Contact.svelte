@@ -1,4 +1,11 @@
 <script>
+  let form = {
+    name: "",
+    email: "",
+    subject: "",
+    message: ""
+  };
+
   let submitting = false;
   let submitResp = "";
   function handleSubmit(e) {
@@ -114,19 +121,34 @@
 <section class="page theme-primary align-center" id="contact">
   <br />
   <span class="title white-text">I'd love to hear from you.</span>
-  <form class="valign-wrapper" name="contact" method="POST" netlify>
+  <form class="valign-wrapper">
     <div class="row" style="padding: 0px;margin: 0px;">
       <div class="input-field col s12 m8 l6 offset-m2 offset-l3">
-        <input id="name" type="text" name="name" required />
+        <input
+          id="name"
+          type="text"
+          name="name"
+          required
+          bind:value={form.name} />
         <label for="name">name</label>
       </div>
 
       <div class="input-field col s12 m8 l6 offset-m2 offset-l3">
-        <input id="email" type="email" name="email" required />
+        <input
+          id="email"
+          type="email"
+          name="email"
+          required
+          bind:value={form.email} />
         <label for="name">email</label>
       </div>
       <div class="input-field col s12 m8 l6 offset-m2 offset-l3">
-        <input id="subject" type="text" name="subject" required />
+        <input
+          id="subject"
+          type="text"
+          name="subject"
+          required
+          bind:value={form.subject} />
         <label for="name">subject</label>
       </div>
 
@@ -135,6 +157,7 @@
           id="message"
           class="materialize-textarea"
           name="message"
+          bind:value={form.message}
           required />
         <label for="message">message</label>
       </div>
@@ -143,6 +166,9 @@
           <h6 class="white-text">{submitResp}</h6>
         </div>
       {/if}
+      <div class="input-field col s12">
+        <div data-netlify-recaptcha="true" />
+      </div>
       <div class="input-field col s12 center-align">
         <button disabled={submitting}>
           {submitting ? 'Sending...' : 'Send message'}
