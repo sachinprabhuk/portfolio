@@ -21,28 +21,24 @@
           if (entry.isIntersecting) activeID = entry.target.id;
         });
       },
-      {
-        threshold: 0.51
-      }
+      { threshold: 0.51 }
     );
     sections.forEach(section => io.observe(section));
 
-    const cardIO = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.remove("dim");
-          observer.unobserve(entry.target);
-        }
-      });
-    });
-    document.querySelectorAll("#my-work .card").forEach(
-      card => {
-        cardIO.observe(card);
+    const cardIO = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.remove("dim");
+            observer.unobserve(entry.target);
+          }
+        });
       },
-      {
-        threshold: 0.9
-      }
+      { threshold: 0.2 }
     );
+    document.querySelectorAll("#my-work .card").forEach(card => {
+      cardIO.observe(card);
+    });
   });
 </script>
 

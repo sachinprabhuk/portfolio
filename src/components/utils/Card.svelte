@@ -28,12 +28,6 @@
     font-size: 20px;
     line-height: 22px;
   }
-  /* .tech::before {
-    content: "<";
-  }
-  .tech::after {
-    content: "/>";
-  } */
   .techs {
     position: absolute;
     bottom: 56px;
