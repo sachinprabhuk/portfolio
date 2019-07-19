@@ -8,43 +8,25 @@
 
   let activeID = null;
   onMount(() => {
-    const scrollHanlder = (function() {
-      const sections = [
-        {
-          id: "#home",
-          node: document.querySelector("#home"),
-          offsetTop: 0
-        },
-        {
-          id: "#about",
-          node: document.querySelector("#about"),
-          offsetTop: 0
-        },
-        {
-          id: "#my-work",
-          node: document.querySelector("#my-work"),
-          offsetTop: 0
-        },
-        {
-          id: "#contact",
-          node: document.querySelector("#contact"),
-          offsetTop: 0
-        }
-      ].map(el => {
-        el.offsetTop = el.node.offsetTop;
-        return el;
-      });
+    const home = document.querySelector("#home");
+    const about = document.querySelector("#about");
+    const work = document.querySelector("#my-work");
+    const contact = document.querySelector("#contact");
 
-      return e => {
-        let scrollDist = window.scrollY;
-        if (scrollDist < sections[1].offsetTop) activeID = sections[0].id;
-        else if (scrollDist < sections[2].offsetTop) activeID = sections[1].id;
-        else if (scrollDist < sections[3].offsetTop) activeID = sections[2].id;
-        else activeID = sections[3].id;
-      };
-    })();
-
-    window.addEventListener("scroll", scrollHanlder);
+    const io = new IntersectionObserver(
+      (entries, io) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) activeID = entry.target.id;
+        });
+      },
+      {
+        threshold: 0.51
+      }
+    );
+    io.observe(home);
+    io.observe(about);
+    io.observe(work);
+    io.observe(contact);
   });
 </script>
 

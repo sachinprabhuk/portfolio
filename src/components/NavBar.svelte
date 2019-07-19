@@ -4,25 +4,25 @@
   const navOps = [
     {
       key: 1,
-      link: "#home",
+      link: "home",
       icon: "home",
       text: "Welcome"
     },
     {
       key: 2,
-      link: "#about",
+      link: "about",
       icon: "person_outline",
       text: "About me"
     },
     {
       key: 3,
-      link: "#my-work",
+      link: "my-work",
       icon: "developer_mode",
       text: "Work"
     },
     {
       key: 4,
-      link: "#contact",
+      link: "contact",
       icon: "devices",
       text: "Contact me"
     }
@@ -75,14 +75,14 @@
   {#each navOps as navOp (navOp.key)}
     {#if navOp.link === activeID}
       <li class="active">
-        <a href={navOp.link}>
+        <a href={`#${navOp.link}`}>
           <i class="material-icons grey-text">{navOp.icon}</i>
           {navOp.text}
         </a>
       </li>
     {:else}
       <li>
-        <a href={navOp.link}>
+        <a href={`${navOp.link}`}>
           <i class="material-icons grey-text">{navOp.icon}</i>
           {navOp.text}
         </a>
