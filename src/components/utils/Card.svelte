@@ -42,10 +42,17 @@
   .tech:not(:last-child)::after {
     content: "  +  ";
   }
+  .card {
+    transition: transform 0.5s ease-in, opacity 0.8s ease-in;
+  }
+  .card.dim {
+    transform: translateY(100px);
+    opacity: 0;
+  }
 </style>
 
 <div class="col s12 m6 l4">
-  <div class="card small">
+  <div class="card small dim">
     <div class="card-content black-text">
       <span class="card-title">{title}</span>
       <p class="grey-text">{description}</p>

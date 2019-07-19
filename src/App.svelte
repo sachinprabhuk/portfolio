@@ -8,10 +8,12 @@
 
   let activeID = null;
   onMount(() => {
-    const home = document.querySelector("#home");
-    const about = document.querySelector("#about");
-    const work = document.querySelector("#my-work");
-    const contact = document.querySelector("#contact");
+    const sections = [
+      document.querySelector("#home"),
+      document.querySelector("#about"),
+      document.querySelector("#my-work"),
+      document.querySelector("#contact")
+    ];
 
     const io = new IntersectionObserver(
       (entries, io) => {
@@ -23,10 +25,24 @@
         threshold: 0.51
       }
     );
-    io.observe(home);
-    io.observe(about);
-    io.observe(work);
-    io.observe(contact);
+    sections.forEach(section => io.observe(section));
+
+    const cardIO = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.remove("dim");
+          observer.unobserve(entry.target);
+        }
+      });
+    });
+    document.querySelectorAll("#my-work .card").forEach(
+      card => {
+        cardIO.observe(card);
+      },
+      {
+        threshold: 0.9
+      }
+    );
   });
 </script>
 

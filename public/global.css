@@ -59,3 +59,10 @@ section .title i.material-icons {
   margin-top: 8px;
   margin-right: 15px;
 }
+
+.card:nth-child(2) {
+  transform: translateY(140px);
+}
+.card:nth-child(3) {
+  transform: translateY(200px);
+}
