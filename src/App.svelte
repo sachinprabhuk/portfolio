@@ -27,14 +27,16 @@
 
     const cardIO = new IntersectionObserver(
       (entries, observer) => {
-        entries.forEach(entry => {
+        entries.forEach((entry, index) => {
           if (entry.isIntersecting) {
-            entry.target.classList.remove("dim");
-            observer.unobserve(entry.target);
+            setTimeout(() => {
+              entry.target.classList.remove("dim");
+              observer.unobserve(entry.target);
+            }, index * 250);
           }
         });
       },
-      { threshold: 0.2 }
+      { threshold: 0.1 }
     );
     document.querySelectorAll("#my-work .card").forEach(card => {
       cardIO.observe(card);
