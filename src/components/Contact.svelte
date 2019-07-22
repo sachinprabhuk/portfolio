@@ -5,28 +5,18 @@
     subject: "",
     message: ""
   };
-
-  const encode = data => {
-    return Object.keys(data)
-      .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
-      .join("&");
-  };
-
   let submitting = false;
   let submitResp = "";
+
   async function handleSubmit(e) {
     e.preventDefault();
     submitting = true;
     try {
-      await fetch("/", {
+      await fetch("/.netlify/functions/send-mail", {
         method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: encode({
-          "form-name": "contact",
-          ...form
-        })
+        body: JSON.stringify(form)
       });
-      for (let key in form) form[key] = null;
+      for (let key in form) form[key] = "";
       submitResp = {
         success: true,
         message: "Thanks for the message. Talk to you soon :)"
