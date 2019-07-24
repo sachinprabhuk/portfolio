@@ -82,7 +82,7 @@
       </li>
     {:else}
       <li>
-        <a href={`${navOp.link}`}>
+        <a href={`#${navOp.link}`}>
           <i class="material-icons grey-text">{navOp.icon}</i>
           {navOp.text}
         </a>
