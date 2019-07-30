@@ -117,7 +117,7 @@
           HIRE ME
         </a>
         <a
-          href="/__Resume_v2__.pdf"
+          href="/sachin_resume_v3.pdf"
           download
           class="col offset-s2 s8 offset-m2 m4 center-align download-cv
           theme-primary white-text">
