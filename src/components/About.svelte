@@ -96,13 +96,14 @@
             <li>Data structure</li>
             <li>Algorithms</li>
             <li>RDBMS and SQL</li>
-            <li>MonogDB</li>
+            <li>MongoDB</li>
           </ul>
         </div>
         <div class="col s12 m6">
           <h6>Other tools</h6>
           <ul class="grey-text">
             <li>Typescript</li>
+            <li>Mobx</li>
             <li>Materialize CSS</li>
             <li>Semantic UI react</li>
             <li>And more...</li>

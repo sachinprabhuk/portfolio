@@ -73,13 +73,11 @@
   }
 
   footer {
-    position: absolute;
-    bottom: 0px;
-    left: 0px;
-    display: block;
+    display: flex;
     width: 100%;
-    padding: 10px 20px;
-    text-align: center;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
   }
   footer .cpr {
     display: flex;
@@ -139,13 +137,15 @@
   button:disabled {
     background-color: #dfdfdf;
   }
+
+  form {
+    margin: 30px 0px 60px 0px;
+  }
 </style>
 
-<section class="page theme-primary align-center " id="contact">
+<section class="theme-primary align-center " id="contact">
   <br />
   <span class="title white-text">I'd love to hear from you.</span>
-  <br />
-  <br />
   <form on:submit={handleSubmit}>
     <div class="row valign-center" style="padding: 0px;margin: 0px;">
       <div class="col s12 m8 l6 offset-m2 offset-l3">
@@ -203,11 +203,18 @@
       </div>
     </div>
   </form>
-  <footer class="black-text grey lighten-4">
-    <p>Designed and developed by: sachin prabhu K</p>
-    <p class="cpr">
+  <footer class="black-text grey lighten-4 page-footer">
+    <p>
+      Designed and developed by:
+      <b class="theme-primary-text">
+        <span>&lt;</span>
+        Sachin Prabhu K
+        <span>/&gt;</span>
+      </b>
+    </p>
+    <!-- <p class="cpr">
       <i class="material-icons">copyright</i>
       copyright 2019
-    </p>
+    </p> -->
   </footer>
 </section>
