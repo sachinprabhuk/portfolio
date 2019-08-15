@@ -33,4 +33,12 @@
     </form>
   </body>
   <script src="/materialize.min.js"></script>
+  <script>
+    window.onload = function() {
+      setTimeout(() => {
+        const headShot = document.querySelector("img#head-shot");
+        headShot.src = "/images/headshot.jpg";
+      }, 1);
+    };
+  </script>
 </html>

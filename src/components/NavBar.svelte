@@ -66,7 +66,7 @@
   <li>
     <div class="user-view">
       <div class="circular">
-        <img src="/images/user.png" alt="error" />
+        <img src="/images/headshot-blur.jpg" alt="error" id="head-shot" />
       </div>
       <span class="name">Sachin Prabhu K</span>
       <span class="email">Full stack web developer/programmer.</span>
