@@ -64,10 +64,7 @@
     padding: 0px;
   }
   section#contact {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    position: relative;
   }
   .title {
     font-size: 2.28rem;
@@ -138,12 +135,12 @@
   }
 
   form {
-    margin: 60px 0px 60px 0px;
-    justify-self: center;
+    margin: 57px 0px 70px 0px;
   }
 </style>
 
 <section class="theme-primary align-center " id="contact">
+  <br />
   <form on:submit={handleSubmit}>
     <span class="title white-text">I'd love to hear from you.</span>
     <div class="row valign-center" style="padding: 0px;margin: 0px;">
@@ -202,7 +199,7 @@
       </div>
     </div>
   </form>
-  <footer class="black-text grey lighten-4">
+  <footer class="black-text grey lighten-4 page-footer">
     <p>
       Designed and developed by:
       <b class="theme-primary-text">
