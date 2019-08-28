@@ -118,7 +118,7 @@
           HIRE ME
         </a>
         <a
-          href="/sachin_resume_v3.pdf"
+          href="/sachin-prabhu-k-resume.pdf"
           download
           class="col offset-s2 s8 offset-m2 m4 center-align download-cv
           theme-primary white-text">
