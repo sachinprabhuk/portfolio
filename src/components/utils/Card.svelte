@@ -51,7 +51,7 @@
       <span class="card-title">{title}</span>
       <p class="grey-text">{description}</p>
       <p class="techs">
-        {#each techs as tech (id)}
+        {#each techs as tech, index (`${tech}-${id}-${index}`)}
           <span class="tech">{tech}</span>
         {/each}
       </p>

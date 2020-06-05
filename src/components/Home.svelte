@@ -1,16 +1,15 @@
 <style>
   #home {
     overflow: hidden;
-    position: relative;
     display: flex;
+    text-align: center;
     justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    transform: translateY(-10%);
   }
 
-  section#home .container {
-    height: max-content;
-    z-index: 99;
-    margin-top: 160px;
-  }
   section .name {
     font-family: "palanquin-dark-bold";
     display: flex;
@@ -60,15 +59,10 @@
 </style>
 
 <section class="page" id="home">
-  <!-- <Canvas style="position: absolute;left: 0px;top: 0px" /> -->
-  <!-- <img src="/images/lap2.jpg" alt="error" /> -->
-  <div class="container center-align">
+
+  <div class="container">
     <span>Hello, world</span>
-    <h2 class="name theme-primary-text">
-      <!-- <i class="material-icons large">chevron_left</i> -->
-      I'm Sachin Prabhu K
-      <!-- <i class="material-icons large">chevron_right</i> -->
-    </h2>
+    <h2 class="name theme-primary-text">I'm Sachin Prabhu K</h2>
     <div class="description">
       <h5>Full stack web developer</h5>
       <h5>Programmer</h5>

@@ -1,44 +1,47 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="stylesheet" href="/materialize.css" />
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
+    <head>
+        <meta charset="utf8" />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="stylesheet" href="/materialize.css" />
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 
-    <title>Sachin | Portfolio</title>
+        <title>Sachin | Portfolio</title>
 
-    <link rel="icon" type="image/png" href="/favicon.ico" />
-    <link rel="stylesheet" href="/global.css" />
-    <link rel="stylesheet" href="/bundle.css" />
+        <link rel="icon" type="image/png" href="/favicon.ico" />
+        <link rel="stylesheet" href="/global.css" />
+        <link rel="stylesheet" href="/bundle.css" />
 
-    <script defer src="/bundle.js"></script>
-  </head>
+        <script defer src="/bundle.js"></script>
+    </head>
 
-  <body>
-    <!-- this is a fake form for netlify forms to work -->
-    <form hidden name="contact" netlify netlify-honeypot="bot-field">
-      <p
-        style="visibility: hidden;width: 0px;height: 0px;position: absolute;left: -99999999px;"
-      >
-        <input type="text" name="bot-field" />
-      </p>
-      <input type="text" name="name" />
-      <input type="email" name="email" />
-      <input type="text" name="subject" />
-      <textarea name="message"></textarea>
-    </form>
-  </body>
-  <script src="/materialize.min.js"></script>
-  <script>
-    window.onload = function() {
-      setTimeout(() => {
-        const headShot = document.querySelector("img#head-shot");
-        headShot.src = "/images/headshot.jpg";
-      }, 1);
-    };
-  </script>
+    <body>
+        <!-- this is a fake form for netlify forms to work -->
+        <form hidden name="contact" netlify netlify-honeypot="bot-field">
+            <p
+                style="
+                    visibility: hidden;
+                    width: 0px;
+                    height: 0px;
+                    position: absolute;
+                    left: -99999999px;
+                "
+            >
+                <input type="text" name="bot-field" />
+            </p>
+            <input type="text" name="name" />
+            <input type="email" name="email" />
+            <input type="text" name="subject" />
+            <textarea name="message"></textarea>
+        </form>
+    </body>
+    <script src="/materialize.min.js"></script>
+    <script>
+        window.onload = function () {
+            setTimeout(() => {
+                const headShot = document.querySelector("img#head-shot");
+                headShot.src = "/images/headshot.jpg";
+            }, 1);
+        };
+    </script>
 </html>

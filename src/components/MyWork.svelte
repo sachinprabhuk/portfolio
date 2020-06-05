@@ -3,7 +3,7 @@
   const Project = (function() {
     let id = 1;
     return function Project(title, description, techs, link) {
-      this.id = id++;
+      this.id = ++id;
       this.title = title;
       this.description = description;
       this.techs = techs;
@@ -39,6 +39,9 @@
       "https://github.com/sachinprabhuk/inventoryapp"
     )
   ];
+  for (let project of projects) {
+    console.log(project.id);
+  }
 </script>
 
 <style>
@@ -57,7 +60,7 @@
   <div class="row">
     <div class="col s12 m10 offset-m1">
       {#each projects as project (project.id)}
-        <Card {...project} id={project.id} />
+        <Card {...project} />
       {/each}
     </div>
   </div>

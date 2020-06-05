@@ -1,4 +1,7 @@
 <script>
+  import firebase from "firebase/app";
+  import "firebase/firestore";
+
   let form = {
     name: "",
     email: "",
@@ -18,15 +21,12 @@
     e.preventDefault();
     submitting = true;
     try {
-      await fetch("/", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: encode({
-          "form-name": "contact",
+      await firebase
+        .firestore()
+        .collection("Messages")
+        .add({
           ...form
-        })
-      });
-      for (let key in form) form[key] = null;
+        });
       submitResp = {
         success: true,
         message: "Thanks for the message. Talk to you soon :)"
