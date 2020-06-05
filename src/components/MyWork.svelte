@@ -39,9 +39,6 @@
       "https://github.com/sachinprabhuk/inventoryapp"
     )
   ];
-  for (let project of projects) {
-    console.log(project.id);
-  }
 </script>
 
 <style>

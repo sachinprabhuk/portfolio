@@ -72,14 +72,6 @@
     font-weight: 600;
   }
 
-  footer {
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-    padding: 15px;
-  }
-
   .input-field input[type="text"] + label,
   .input-field input[type="email"] + label,
   .input-field textarea + label {
@@ -101,8 +93,8 @@
     border-bottom: 1px solid #dfdfdf;
     box-shadow: 0 1px 0 0 #dfdfdf;
     color: #fff;
-    /* color: var(--theme-primary); */
     font-size: 16px;
+    margin-bottom: 25px;
   }
 
   .input-field input[type="email"]:focus + label,
@@ -135,22 +127,36 @@
   }
 
   form {
-    margin: 57px 0px 70px 0px;
+    width: 100%;
+    min-height: 87vh;
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
+  }
+
+  footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    width: 100%;
+    height: 13vh;
   }
 </style>
 
 <section class="theme-primary align-center " id="contact">
   <br />
-  <form on:submit={handleSubmit}>
-    <span class="title white-text">I'd love to hear from you.</span>
-    <div class="row valign-center" style="padding: 0px;margin: 0px;">
+  <form on:submit={handleSubmit} class="valign-wrapper">
+    <div class="row" style="margin: 0px;width: 100%">
       <div class="col s12 m8 l6 offset-m2 offset-l3">
+        <span class="title white-text">I'd love to hear from you.</span>
         <div class="input-field">
           <input
             id="name"
             type="text"
             name="name"
             required
+            autocomplete="off"
             bind:value={form.name} />
           <label for="name">name</label>
         </div>
@@ -160,6 +166,7 @@
             type="email"
             name="email"
             required
+            autocomplete="off"
             bind:value={form.email} />
           <label for="name">email</label>
         </div>
@@ -169,6 +176,7 @@
             type="text"
             name="subject"
             required
+            autocomplete="off"
             bind:value={form.subject} />
           <label for="name">subject</label>
         </div>
@@ -177,6 +185,7 @@
             id="message"
             class="materialize-textarea"
             name="message"
+            autocomplete="off"
             bind:value={form.message}
             required />
           <label for="message">message</label>
