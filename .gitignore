@@ -5,3 +5,5 @@ public/roboto
 public/palanquin
 public/GitHub-Mark
 .env
+# Local Netlify folder
+.netlify

@@ -1,18 +1,10 @@
 <script>
-  import firebase from "firebase/app";
-  import "firebase/firestore";
 
   let form = {
-    name: "",
-    email: "",
-    subject: "",
-    message: ""
-  };
-
-  const encode = data => {
-    return Object.keys(data)
-      .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
-      .join("&");
+    name: "asf",
+    email: "asdf@gmail.com",
+    subject: "sdaf",
+    message: "asdfas"
   };
 
   let submitting = false;
@@ -21,26 +13,17 @@
     e.preventDefault();
     submitting = true;
     try {
-      await firebase
-        .firestore()
-        .collection("Messages")
-        .add({
-          ...form
-        });
-      submitResp = {
-        success: true,
-        message: "Thanks for the message. Talk to you soon :)"
-      };
-    } catch (e) {
-      submitResp = {
-        success: false,
-        message: "Oops!!something went wrong. Please try again in sometime"
-      };
+      await window.fetch("/api/sendmail", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(form)
+      });
+    } catch(e) {
+    } finally {
+      submitting = false;
     }
-    setTimeout(() => {
-      submitResp = "";
-    }, 7000);
-    submitting = false;
   }
 </script>
 
