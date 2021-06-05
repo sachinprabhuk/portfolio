@@ -1,10 +1,10 @@
 <script>
 
   let form = {
-    name: "asf",
-    email: "asdf@gmail.com",
-    subject: "sdaf",
-    message: "asdfas"
+    name: "",
+    email: "",
+    subject: "",
+    message: ""
   };
 
   let submitting = false;
@@ -20,9 +20,20 @@
         },
         body: JSON.stringify(form)
       });
+      submitResp = {
+        success: true,
+        message: "Thanks for the message. Talk to you soon :)"
+      };
     } catch(e) {
+       submitResp = {
+        success: false,
+        message: "Oops! Something went wrong!"
+      };
     } finally {
       submitting = false;
+      setTimeout(() => {
+        submitResp = "";
+      }, 3000);
     }
   }
 </script>
